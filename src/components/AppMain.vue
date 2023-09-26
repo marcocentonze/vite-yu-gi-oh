@@ -30,7 +30,7 @@ export default {
        </div>
 
 
-         <!-- h3 + cards -->
+         <!-- h4 + cards -->
         <div class="container ps-5 pe-5" style="background-color: white;">
             <div>
                 <h3 class="text-white" style="background-color:#212529 ">Found 39 cards</h3>
@@ -40,7 +40,7 @@ export default {
                     <div class="card" style="width: 200px; height: 450px;">
                         <img :src="card.card_images[0].image_url" class="card-img-top" alt="Immagine">
                         <div class="card-body" style="background-color: #D48F38;">
-                            <h3 class="card-title">{{ card.name }}</h3>
+                            <h4 class="card-title text-white">{{ card.name }}</h4>
                             <p class="card-text">{{ card.archetype }}</p>
                         </div>
                     </div>
