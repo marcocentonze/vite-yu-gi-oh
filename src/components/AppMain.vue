@@ -15,11 +15,15 @@ export default {
     },
     created() {
         store.fetchData(); //richiamo la funzione per prendere i dati dall'api
-        store.fetchFilters();
+
     },
     methods: {
-        filterSelection() {
-            store.fetchData(store.baseUrl + `&archetype=${store.filterSelection}`);
+        filterArchetype() {
+            const url = 'https://db.ygoprodeck.com/api/v7/cardinfo.php' + `?archetype=${store.selectArch}`
+
+            console.log(url);
+            this.store.base_url = url + '&num=20&offset=0'
+            store.fetchData(url)
         }
     },
 };
@@ -31,8 +35,8 @@ export default {
         <!-- select -->
         <div class="container py-4">
 
-            <AppFilter @selector-filter="filterSelection"/>
-            
+            <AppFilter @selector-filter="filterArchetype" />
+
 
 
         </div>

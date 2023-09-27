@@ -9,13 +9,10 @@ export default {
             store,
         }
     },
-    emits: ['filterSelection', 'SelectorFilter'],
-    methods: {
-        changeFilter() {
-            console.log('funziona ti prego');
-            this.$emit('filterSelection');
-        }
-    }
+    emits: ['selectorFilter'],
+    created() {
+        store.fetchData();
+    },
 }
 </script>
 
@@ -23,12 +20,12 @@ export default {
 <template>
     <div>
         <label for="sceltaOpzione"></label>
-        <select id="sceltaOpzione" name="opzione" class="ps-1 pe-5" v-model="store.filterSelection"
-            @click="$emit('SelectorFilter')" @change="changeFilter">
-            <option value="" selected>Select one</option>
-            <option v-for="archetype in store.archetypes" :value="archetype.archetype_name">{{
-                archetype.archetype_name }}</option>
-
+        <select id="sceltaOpzione" class="ps-1 pe-5" v-model="store.selectArch" @change="$emit('selectorFilter')">
+            <option disabled value="">Choose Archetyp</option>
+            <option value="Alien">Alien</option>
+            <option value="Noble Knight">Noble Knight</option>
+            <option value="Melodious">Melodious</option>
+            <option value="Archfiend">Archfiend</option>
         </select>
     </div>
 </template>
