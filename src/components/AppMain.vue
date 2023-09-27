@@ -1,16 +1,27 @@
 <script>
+
 import { store } from '../store.js';
+import AppFilter from './AppFilter.vue'
 
 export default {
     name: 'AppMain',
+    components: {
+        AppFilter
+    },
     data() {
         return {
             store,
         };
     },
     created() {
-        store.fetchData() //richiamo la funzione per prendere i dati dall'api
-    }
+        store.fetchData(); //richiamo la funzione per prendere i dati dall'api
+        store.fetchFilters();
+    },
+    methods: {
+        filterSelection() {
+            store.fetchData(store.baseUrl + `&archetype=${store.filterSelection}`);
+        }
+    },
 };
 
 </script>
@@ -19,14 +30,10 @@ export default {
     <main>
         <!-- select -->
         <div class="container py-4">
-            <div>
-                <label for="sceltaOpzione"></label>
-                <select id="sceltaOpzione" name="opzione" class="ps-1 pe-5">
-                    <option value="opzione1" active>Alien</option>
-                    <option value="opzione2">Drago</option>
-                    <option value="opzione3">Fuoco</option>
-                </select>
-            </div>
+
+            <AppFilter @selector-filter="filterSelection" />
+
+
         </div>
 
 
