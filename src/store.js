@@ -5,7 +5,7 @@ export const store = reactive({
   base_url: "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0",
   cards: null,
   archetypes_url: "https://db.ygoprodeck.com/api/v7/archetypes.php",
-  archetypes: [],
+  archetypes: null,
   filterSelection: null,
 
   fetchData() {

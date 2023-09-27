@@ -6,15 +6,15 @@ export default {
 
     data() {
         return {
-            store
+            store,
         }
     },
-    emits: ['SelectorFilter'], 
+    emits: ['filterSelection', 'SelectorFilter'],
     methods: {
-      eventFilter() {
-        console.log('funziona ti prego');
-        this.$emit('selector-filter');
-      }
+        changeFilter() {
+            console.log('funziona ti prego');
+            this.$emit('filterSelection');
+        }
     }
 }
 </script>
@@ -24,7 +24,7 @@ export default {
     <div>
         <label for="sceltaOpzione"></label>
         <select id="sceltaOpzione" name="opzione" class="ps-1 pe-5" v-model="store.filterSelection"
-            @click="$emit('SelectorFilter')" @keyup.enter="enterFilter">
+            @click="$emit('SelectorFilter')" @change="changeFilter">
             <option value="" selected>Select one</option>
             <option v-for="archetype in store.archetypes" :value="archetype.archetype_name">{{
                 archetype.archetype_name }}</option>
