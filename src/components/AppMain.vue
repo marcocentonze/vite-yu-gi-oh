@@ -31,7 +31,7 @@ export default {
         <!-- select -->
         <div class="container py-4">
 
-            <AppFilter @selector-filter="SelectorFilter"/>
+            <AppFilter @selector-filter="filterSelection"/>
             
 
 
