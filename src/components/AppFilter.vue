@@ -11,6 +11,7 @@ export default {
         }
     },
     emits: ['SelectorFilter']
+   
 
 }
 
@@ -19,10 +20,10 @@ export default {
 <template>
     <div>
         <label for="sceltaOpzione"></label>
-        <select id="sceltaOpzione" name="opzione" class="ps-1 pe-5" v-model="store.searchOption"
+        <select id="sceltaOpzione" name="opzione" class="ps-1 pe-5" v-model="store.filterSelection"
             @click="$emit('SelectorFilter')">
             <option value="" active>Select One</option>
-            <option v-for="archetype in store.archetypeList" :value="archetype.archetype_name">{{
+            <option v-for="archetype in store.archetypes" :value="archetype.archetype_name">{{
                 archetype.archetype_name }}</option>
 
         </select>
